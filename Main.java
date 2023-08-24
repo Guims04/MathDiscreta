@@ -1,42 +1,62 @@
 package apagar;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+// import java.util.ArrayList;
+// import java.util.Stack;
 
 public class Main {
-
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		ArrayList<Character> operações = new ArrayList();
-		// -----------------------------------------------------------------
-		// System.out.print("Informe o número de proposições: ");
-		// int n = sc.nextInt();
-		// Conectivos.setN(n);
-		// int numRow = (int) Math.pow(2, n);
-		// Conectivos.setNumRow(numRow);
-		// boolean[][] matriz = new boolean[numRow][n];
-		// Conectivos.setTabelaVerdade(matriz);
-		// -----------------------------------------------------------------
-		// System.out.print("Escolha os símbolos das suas proposições: ");
-		// for (int i = 0; i < n; i++) {
-		// operações.add(sc.next().charAt(0));
-		// }
-		// operações.addAll(Operações.Caracteres());
+		ArrayList<Character> operations = new ArrayList();
 
-		// sc.nextLine();
+		// ---------------------------------------------------------
+
+		// String input = "((A ^ B) ^ (A v B))";
+		// Operacoes.extractParenthesesExpressions(input);
+
 		// -----------------------------------------------------------------
+		System.out.print("Informe o número de proposições: ");
+		int n = sc.nextInt();
+		System.out.print("Escolha os símbolos das suas proposições: ");
+		for (int i = 0; i < n; i++) {
+			operations.add(sc.next().charAt(0));
+		}
+		Operacoes.creatPropArrays(operations, n);
+
+		sc.nextLine();
+
 		System.out.print("Digite aqui sua fórmula: ");
 		String formula = sc.nextLine();
 		formula = (formula.replaceAll("\\s", "")).toUpperCase();
-		// Operações.SimbolosValidos(formula);
-		Operações.validador(formula);
+		boolean isValidate = false;
+		if (formula != "")
+			isValidate = Operacoes.validador(formula, operations);
+		if (isValidate) {
+			Operacoes.prepareToOperate(formula);
+		}
 
-		System.out.println("");
-
+		// boolean[][] matriz = new boolean[numRow][n];
+		// Conectivos.setTabelaVerdade(matriz);
 		// -----------------------------------------------------------------
-		// Formula na mão
-		// Conectivos.Tabela();
-		// Conectivos.imprimirTabela(Conectivos.CondicionalOperaçãoDois(Conectivos.Conjunção(0,
+		/*
+		 * sc.nextLine();
+		 * 
+		 * // -----------------------------------------------------------------
+		 * /*
+		 * Operacoes.SimbolosValidos(formula);
+		 * Operacoes.ProposiçõesValidas(formula, operações);
+		 * Operacoes.validador(formula, operações);
+		 * 
+		 * // System.out.println("");
+		 * // -----------------------------------------------------------------
+		 * // Formula na mão
+		 * 
+		 */
+		Conectivos.Tabela();
+
 		// 1), 0));
 	}
+
 }

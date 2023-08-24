@@ -23,12 +23,11 @@ public class Conectivos extends TabelaVerdadeDois {
 		return result;
 	}
 
-	public static boolean[][] Conjunção(int coluna1, int coluna2) {
-		boolean[][] result = new boolean[numRow][1];
+	public static boolean[] Conjunção(boolean[] arr, boolean[] arr2) {
+		System.out.println(numRow);
+		boolean[] result = new boolean[numRow];
 		for (int row = 0; row < numRow; row++) {
-			for (int column = 0; column < 1; column++) {
-				result[row][column] = tabelaVerdade[row][coluna1] && tabelaVerdade[row][coluna2];
-			}
+			result[row] = arr[row] && arr2[row];
 		}
 		return result;
 	}
@@ -53,12 +52,10 @@ public class Conectivos extends TabelaVerdadeDois {
 		return result;
 	}
 
-	public static boolean[][] Disjunção(int coluna1, int coluna2) {
-		boolean[][] result = new boolean[numRow][1];
+	public static boolean[] Disjunção(boolean[] arr, boolean[] arr2) {
+		boolean[] result = new boolean[numRow];
 		for (int row = 0; row < numRow; row++) {
-			for (int column = 0; column < 1; column++) {
-				result[row][column] = tabelaVerdade[row][coluna1] || tabelaVerdade[row][coluna2];
-			}
+			result[row] = arr[row] || arr2[row];
 		}
 		return result;
 	}
@@ -83,13 +80,12 @@ public class Conectivos extends TabelaVerdadeDois {
 		return result;
 	}
 
-	public static boolean[][] Condicional(int coluna1, int coluna2) {
-		boolean[][] result = new boolean[numRow][1];
+	public static boolean[] Condicional(boolean[] arr, boolean[] arr2) {
+		boolean[] result = new boolean[numRow];
 		for (int row = 0; row < numRow; row++) {
-			for (int column = 0; column < 1; column++) {
-				result[row][column] = !tabelaVerdade[row][coluna1] || tabelaVerdade[row][coluna2];
-			}
+			result[row] = !arr[row] || arr2[row];
 		}
+
 		return result;
 	}
 
@@ -123,14 +119,15 @@ public class Conectivos extends TabelaVerdadeDois {
 		return result;
 	}
 
-	public static boolean[][] BiCondicional(int coluna1, int coluna2) {
-		boolean[][] result = new boolean[numRow][1];
+	public static boolean[] BiCondicional(boolean[] arr, boolean[] arr2) {
+		boolean[] result = new boolean[numRow];
 		for (int row = 0; row < numRow; row++) {
 			for (int column = 0; column < 1; column++) {
-				result[row][column] = (tabelaVerdade[row][coluna1] && tabelaVerdade[row][coluna2])
-						|| (!tabelaVerdade[row][coluna1] && !tabelaVerdade[row][coluna2]);
+				result[row] = (arr[row] && arr2[row])
+						|| (!arr[row] && !arr2[row]);
 			}
 		}
+
 		return result;
 	}
 
@@ -155,4 +152,5 @@ public class Conectivos extends TabelaVerdadeDois {
 		}
 		return result;
 	}
+
 }
